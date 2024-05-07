@@ -1,0 +1,50 @@
+    {% extends "base.html" %}
+
+{% block body %}
+    <h1>Distraction Form</h1>
+
+    <form method="post">
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.grade.label }} <br>
+            {{ form.grade() }}
+            <!-- Display errors for this field -->
+            {% for error in form.grade.errors %}
+                <br> <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.distracted.label }} <br>
+            {{ form.distracted() }}
+            <!-- Display errors for this field -->
+            {% for error in form.distracted.errors %}
+                <br> <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.difficulty.label }} <br>
+            {{ form.difficulty() }}
+            <!-- Display errors for this field -->
+            {% for error in form.difficulty.errors %}
+                <br> <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.phoneusage.label }} <br>
+            {{ form.phoneusage() }}
+            <!-- Display errors for this field -->
+            {% for error in form.phoneusage.errors %}
+                <br> <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+
+{% endblock %}

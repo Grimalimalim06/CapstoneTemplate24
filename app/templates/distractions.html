@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row">
+    <div class=>
+        <a href="/distraction/new" class="btn btn-primary btn-sm mt-5" role="button">New Distraction</a>
+    </div>
+    <div>
+        <h1 class="text-center font-italic font-weight-bold display-1" style="font-family:Helvetica, sans-serif">All Distractions</h1>
+    </div>
+</div>
+
+{% if distractions %}
+    {% for distraction in distractions %}
+        <div class="row border-bottom">
+            <div class="col-1">
+                <a data-toggle="tooltip" data-placement="top" title="Delete Distraction" href="/distraction/delete/{{ distraction.id }}">
+                    <img width="20" class="bottom-image" src="/static/delete.png">
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Edit Distraction" href="/distraction/edit/{{ distraction.id }}">
+                    <img width="20" class="bottom-image" src="/static/edit.png">
+                </a>
+            </div>
+            
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                <h3>Distraction ID</h3>
+                {% endif %}
+                <a href="/distraction/{{ distraction.id }}">
+                    {{ distraction.id }}
+                </a>
+            </div>
+
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                <h3>Grade</h3>
+                {% endif %}
+                {{ distraction.grade }}
+            </div>
+            
+            <div class="col-3">
+                {% if loop.index == 1 %}
+                <h3>Difficulty</h3>
+                {% endif %}
+                {{ distraction.difficulty }}
+            </div>
+            
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3>Phone Usage</h3>
+                {% endif %}
+                {{ distraction.phoneusage }}
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <h2>No Distractions Found</h2>
+{% endif %}
+
+{% endblock %}

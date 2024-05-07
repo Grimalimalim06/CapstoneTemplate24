@@ -15,8 +15,7 @@ class ProfileForm(FlaskForm):
     image = FileField("Image") 
     submit = SubmitField('Post')
     role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
-
-
+    age = StringField("Age:")
 
 class ConsentForm(FlaskForm):
     adult_fname = StringField('First Name',validators=[DataRequired()])
@@ -52,4 +51,11 @@ class ClinicForm(FlaskForm):
     state = StringField('State', validators=[DataRequired()])
     zipcode = StringField('Zipcode',validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class DistractionForm(FlaskForm):
+    grade = StringField("Grade:")
+    distracted = SelectField('How Often Distracted',choices=[("Often","Often"),("Rarely","Rarely"),("Never","Never")])
+    difficulty = SelectField('How Difficult Does This Make Learning',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
+    phoneusage = SelectField('How Often Do You Use Your Phone',choices=[("1","1"),("2","2"),("3","3"),("4","4"),("5","5")])
     submit = SubmitField('Submit')

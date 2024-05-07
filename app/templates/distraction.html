@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if distraction %}
+    <div class="container">
+        <div class="row">
+            {% if distraction.author == current_user.id %}
+                <a data-toggle="tooltip" data-placement="top" title="Delete Distraction" href="/distraction/delete/{{distraction.id}}">
+                    <img width="40" class="bottom-image" src="/static/delete.png">
+                </a>
+                <a data-toggle="tooltip" data-placement="top" title="Edit Distraction" href="/distraction/edit/{{distraction.id}}">
+                    <img width="40" class="bottom-image" src="/static/edit.png">
+                </a>
+            {% endif %}
+            <h1 class="display-2">Distraction ID: {{ distraction.id }}</h1>
+            <h2 class="display-5">Grade: {{ distraction.grade }}</h2>
+            <p class="fs-3 text-break">
+                Difficulty: {{ distraction.difficulty }} <br>
+                Distracted: {{ distraction.distracted }} <br>
+                Phone Usage: {{ distraction.phoneusage }} <br>
+                Author: {{ distraction.author.fname }} {{ distraction.author.lname }} <br>
+                Modified Date: {{ distraction.modify_date }}
+            </p>
+        </div>
+    </div>
+{% else %}
+    <p>No Distraction Found</p>
+{% endif %}
+
+{% endblock %}
